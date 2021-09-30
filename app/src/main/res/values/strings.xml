@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MlQRScanning</string>
+    <string name="scanning">Scanning</string>
+    <string name="found_qr">Found QR</string>
+    <string name="rescan">Scan Again</string>
+    <string name="start_scan">Start scan</string>
+    <string name="see_scans">See all scans</string>
+    <string name="scan_done">Scan done</string>
+    <string name="clear_all">Clear all</string>
+    <string name="time">Start and end time</string>
+</resources>
