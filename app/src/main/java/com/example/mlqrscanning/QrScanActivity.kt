@@ -83,7 +83,6 @@ class QrScanActivity : AppCompatActivity() {
             .observe(this, Observer { provider: ProcessCameraProvider? ->
                 if (isCameraPermissionGranted()) {
                     cameraProvider = provider!!
-                    startTime = System.currentTimeMillis()
                     bindPreviewUseCase()
                 } else {
                     ActivityCompat.requestPermissions(
@@ -100,7 +99,7 @@ class QrScanActivity : AppCompatActivity() {
         previewUseCase = Preview.Builder()
             .setTargetRotation(previewView.display.rotation)
             .build()
-        previewUseCase.setSurfaceProvider(previewView.createSurfaceProvider())
+        previewUseCase.setSurfaceProvider(previewView.surfaceProvider)
 
         try {
             bindAnalyseUseCase()
@@ -133,6 +132,8 @@ class QrScanActivity : AppCompatActivity() {
             )
             .build()
         val barcodeScanner = BarcodeScanning.getClient(options)
+
+        startTime = System.currentTimeMillis()
 
         analysisUseCase.setAnalyzer(
             ContextCompat.getMainExecutor(applicationContext), { imageProxy ->
